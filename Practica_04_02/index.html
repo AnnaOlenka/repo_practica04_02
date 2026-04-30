@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Orbitas del sistema solar</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main class="app-shell">
+    <section class="sky-stage" aria-label="Simulacion interactiva del sistema solar">
+      <canvas id="spaceCanvas" aria-label="Planetas orbitando con fondo de estrellas animado"></canvas>
+
+      <aside class="control-panel" aria-label="Controles de simulacion">
+        <div class="brand-block">
+          <p class="eyebrow">Canvas API + DOM dinamico</p>
+          <h1>Sistema solar orbital</h1>
+        </div>
+
+        <div class="control-group">
+          <label for="speedRange">Velocidad orbital</label>
+          <div class="range-row">
+            <input id="speedRange" type="range" min="0" max="5" step="0.1" value="1">
+            <output id="speedValue" for="speedRange">1.0x</output>
+          </div>
+          <p id="speedError" class="validation-message" aria-live="polite"></p>
+        </div>
+
+        <div class="control-group">
+          <label for="starDensityRange">Densidad de estrellas</label>
+          <div class="range-row">
+            <input id="starDensityRange" type="range" min="0.4" max="2" step="0.1" value="1">
+            <output id="starDensityValue" for="starDensityRange">1.0x</output>
+          </div>
+        </div>
+
+        <div class="button-row">
+          <button id="toggleMotion" class="icon-button" type="button" aria-pressed="false" title="Pausar o reanudar">
+            <span class="button-icon" aria-hidden="true">II</span>
+            <span>Pausar</span>
+          </button>
+          <button id="toggleTrails" class="icon-button" type="button" aria-pressed="true" title="Mostrar u ocultar orbitas">
+            <span class="button-icon" aria-hidden="true">O</span>
+            <span>Orbitas</span>
+          </button>
+        </div>
+
+        <dl class="metrics-grid" aria-label="Metricas de rendimiento">
+          <div>
+            <dt>FPS</dt>
+            <dd id="fpsCounter">0</dd>
+          </div>
+          <div>
+            <dt>Planetas</dt>
+            <dd id="planetCounter">0</dd>
+          </div>
+          <div>
+            <dt>Estrellas</dt>
+            <dd id="starCounter">0</dd>
+          </div>
+        </dl>
+
+        <ul id="planetList" class="planet-list" aria-label="Lista dinamica de planetas"></ul>
+      </aside>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,269 @@
+:root {
+  --panel-bg: rgba(8, 13, 26, 0.74);
+  --panel-border: rgba(222, 231, 255, 0.18);
+  --text-main: #f4f7ff;
+  --text-soft: #b7c1d8;
+  --accent: #69e6d6;
+  --accent-strong: #f4bf5f;
+  --danger: #ff7b8f;
+  --speed-hue: 174;
+  color-scheme: dark;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background: #030712;
+  color: var(--text-main);
+  overflow: hidden;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+.app-shell {
+  width: 100vw;
+  min-height: 100vh;
+}
+
+.sky-stage {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  min-height: 620px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 46% 52%, rgba(244, 191, 95, 0.22), transparent 9rem),
+    linear-gradient(145deg, #030712 0%, #08111f 44%, #11091c 100%);
+}
+
+#spaceCanvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.control-panel {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: min(360px, calc(100vw - 48px));
+  max-height: calc(100vh - 48px);
+  padding: 18px;
+  overflow: hidden;
+  border: 1px solid var(--panel-border);
+  border-radius: 8px;
+  background: var(--panel-bg);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.34);
+  backdrop-filter: blur(18px);
+}
+
+.brand-block {
+  margin-bottom: 14px;
+}
+
+.eyebrow {
+  margin: 0 0 6px;
+  color: var(--accent);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(1.5rem, 4vw, 2.2rem);
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.control-group {
+  display: grid;
+  gap: 10px;
+}
+
+.control-group + .control-group {
+  margin-top: 12px;
+}
+
+.control-group label {
+  color: var(--text-soft);
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+.range-row {
+  display: grid;
+  grid-template-columns: 1fr 64px;
+  gap: 12px;
+  align-items: center;
+}
+
+input[type="range"] {
+  width: 100%;
+  accent-color: hsl(var(--speed-hue), 79%, 63%);
+}
+
+input[type="range"].has-error {
+  accent-color: var(--danger);
+}
+
+output {
+  min-width: 64px;
+  padding: 7px 8px;
+  border: 1px solid rgba(105, 230, 214, 0.3);
+  border-radius: 8px;
+  color: var(--accent);
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.validation-message {
+  min-height: 1.15rem;
+  margin: 0;
+  color: var(--danger);
+  font-size: 0.82rem;
+}
+
+.button-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.icon-button {
+  display: inline-flex;
+  min-height: 42px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1px solid rgba(244, 247, 255, 0.15);
+  border-radius: 8px;
+  background: rgba(244, 247, 255, 0.08);
+  color: var(--text-main);
+  cursor: pointer;
+  transition: border-color 160ms ease, background-color 160ms ease, transform 160ms ease;
+}
+
+.icon-button:hover,
+.icon-button.is-active {
+  border-color: rgba(105, 230, 214, 0.55);
+  background: rgba(105, 230, 214, 0.14);
+}
+
+.icon-button:active {
+  transform: translateY(1px);
+}
+
+.button-icon {
+  width: 22px;
+  color: var(--accent-strong);
+  font-size: 0.82rem;
+  font-weight: 900;
+  text-align: center;
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin: 14px 0;
+}
+
+.metrics-grid div {
+  min-width: 0;
+  padding: 10px;
+  border: 1px solid rgba(244, 247, 255, 0.1);
+  border-radius: 8px;
+  background: rgba(244, 247, 255, 0.06);
+}
+
+.metrics-grid dt {
+  color: var(--text-soft);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.metrics-grid dd {
+  margin: 4px 0 0;
+  color: var(--text-main);
+  font-size: 1.2rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+.planet-list {
+  display: grid;
+  gap: 8px;
+  max-height: min(190px, 22vh);
+  margin: 0;
+  padding: 0 6px 10px 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  list-style: none;
+  scrollbar-gutter: stable;
+}
+
+.planet-item {
+  display: grid;
+  grid-template-columns: 14px 1fr auto;
+  gap: 10px;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(244, 247, 255, 0.08);
+}
+
+.planet-swatch {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--planet-color);
+  box-shadow: 0 0 14px var(--planet-color);
+}
+
+.planet-name {
+  min-width: 0;
+  color: var(--text-main);
+  font-weight: 700;
+}
+
+.planet-speed {
+  color: var(--text-soft);
+  font-size: 0.82rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.is-paused .control-panel {
+  --accent: #b7c1d8;
+}
+
+@media (max-width: 760px) {
+  body {
+    overflow: auto;
+  }
+
+  .sky-stage {
+    min-height: 100vh;
+  }
+
+  .control-panel {
+    inset: auto 14px 14px;
+    width: auto;
+    max-height: calc(100vh - 28px);
+    padding: 14px;
+  }
+
+  .planet-list {
+    max-height: min(130px, 18vh);
+  }
+}
